@@ -1,0 +1,387 @@
+/************************************************************************
+// For extensive details about creating a Populr theme, please visit
+// http://developers.populr.me/theming
+*/
+
+
+// You must import variables.less before importing populr_mixins.less
+@import 'palette-custom';
+@import 'palette-Neimar';
+@import 'palette-default';
+@import 'variables';
+@import 'http://populr.me/assets/developers/populr_mixins.less';
+@import 'preboot';
+
+
+// Call preboot.less's reset to reduce browser inconsistencies
+#reset > .global-reset();
+//#populr > .inline-logo-title();
+#populr > .text-color-over-color(@custom-color);
+/////////////////////////////////////////////////////////////////////////
+// Typography defaults
+
+@text-color:  #333332;
+// @custom-color is defined in variables.less
+@link-color: #333332;
+
+// Title text defaults
+// @headline-font-family is defined in variables.less
+
+.headline-text(@font-size:52px;@font-weight:bold;) {
+  font-family: @bold-font;
+  font-size: @font-size;
+  font-weight: @font-weight;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.pop-title-text() {
+  font-family: @headline-font-family;
+  font-size: 38px;
+  font-weight: bold;
+  line-height: 1.1;
+}
+.cool-i-tag(@font-size:22px){
+    display: inline-block;
+    border-left:6px solid @custom-color;
+    padding:2px 0 2px 20px;
+    position: relative;
+    left: -20px;
+    font-size:@font-size;
+    line-height:1.4;
+}
+// Body text defaults
+@body-font-family: @italic-font;
+
+.body-text(@font-size:22px;@font-weight:400;@font-family:@body-font-family;) {
+  font-family: @font-family;
+  font-size: @font-size;
+  font-weight: @font-weight;
+  line-height: 1.45;
+  text-align: left;
+  font-style: normal;
+}
+//Cool Header
+#cool-header{
+    position: fixed;
+    top:0px;
+    left:0px;
+    -moz-box-shadow:    0 4px 2px -2px lightgray;
+    -webkit-box-shadow: 0 4px 2px -2px lightgray;
+    box-shadow:         0 4px 2px -2px lightgray;
+    background:#fff;
+    width:100%;
+    z-index:1000!important;
+    overflow:hidden;
+    padding:10px 0;
+    opacity:.8;
+    #cool-header-inner{
+        background-color:#fff;
+        width:760px;
+        padding:0 70px;
+        height:40px;
+        margin:0 auto;
+        #pop-logo{max-width:120px;float:left;}
+        #pop-links {float:right; width:570px; text-align:right!important;margin:0!important;}
+    }
+}
+
+#pop {
+  margin-top: 0;
+  font-family: @body-font-family;
+  color: @text-color;
+  i, em { 
+    font-style: italic; 
+    font-family:@italic-font;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  
+  b, strong { 
+    font-weight: 700; 
+    font-family:@bold-font;
+  }
+
+  a {
+    color: @link-color;
+    &:active { color: lighten(@link-color, 20%); }
+    &:hover{color:@custom-color}
+  }
+}
+
+// End typography defaults
+/////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////
+// Structure
+
+// Content wrapper
+#my-container{
+    position: relative;
+    top:60px;
+    width:900px;
+    margin:0 auto;
+}
+
+#main-region{
+    position:relative;
+    padding-top:20px;
+}
+
+#main-content { 
+    margin: 0 auto; 
+    background-color: transparent;
+}
+
+// Logo helper
+#pop-logo { margin: 0 auto; }
+
+// Pop title
+#my-pop-title{
+    width: 760px;
+    padding: 20px 70px 40px!important;
+    margin: 30px auto 0!important;
+    overflow: hidden;
+    text-align: center;
+}
+#pop-title {
+    .pop-title-text();
+    text-align: center!important;
+    padding:0!important; 
+    font-size:42px;
+}
+.columnizer-row-inner{
+    background-color: white;
+    opacity:.9;
+}
+
+// Assets
+.asset-title {
+  .headline-text();
+  margin: 20px 0 25px 0;
+}
+
+.description, .body {
+  .body-text();
+
+  margin: 10px 0;
+  ul, ol { margin: .5em 0 .5em 1.5em; }
+  ul li { list-style-type: disc; }
+  ol li { list-style-type: decimal; }
+}
+//deffault i tag for asset-title
+.asset-title{
+    i{border-left:none!important;padding-left:0!important;}
+}
+// Text styling
+.columnizer-cols1{
+  .asset-title {
+    .headline-text(38px;bold);
+    i{font-size:30px;}
+  }
+  .description, .body, .description li, .body li,  {
+    .body-text(22px;400;@italic-font);
+    i{
+        .cool-i-tag(22px);
+    }
+  }
+}
+.columnizer-cols2{
+  .asset-title {
+    .headline-text(38px;bold);
+    i{font-size:30px;}
+  }
+  .description, .body, .description li, .body li,  {
+    .body-text(19px;400;@italic-font);
+    i{
+        .cool-i-tag(19px);
+    }
+  }
+}
+
+.columnizer-cols3{
+  .asset-title {
+    .headline-text(30px;bold);
+    i{font-size:22px;}
+  }
+
+.description, .body, .description li, .body li,  {
+    .body-text(17px;400;@italic-font);
+    i{.cool-i-tag(17px);}
+   }
+  
+}
+// Image asset styling
+#populr > #image-slider-themes > .basic();
+
+.prevnext{display:none!important;}
+
+
+// Document asset styling
+#doc-title{
+        display: table-cell;
+        line-height: 1.4;
+        text-align: left;
+        vertical-align: middle;
+        height:39px;
+        padding-right:10px;
+        color: black!important;
+        font-size:14px;
+        text-transform: capitalize;
+        font-family:@italic-font;
+        max-width:227px;
+      }
+.documents {
+  margin: 0 auto;
+  padding: 30px 0;
+  li { 
+    margin-bottom: 1em;
+    padding:10px;
+    display: block;
+    text-align: left;
+    a {
+      display: block;
+      text-decoration: none;
+      line-height: 1.2;
+      overflow: hidden;
+      varticle-align: middle;
+      .download-button{
+        border:0;
+        margin-bottom:8px;
+        min-width:158px!important;
+        float: left;
+        margin: 0 10px 8px 0;
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+        text-decoration: none;
+        font-style: normal;
+        cursor: pointer;
+        display: inline-block!important;
+        position: relative;
+        height: 40px;
+        line-height:40px;
+        padding: 0 15px!important;
+        vertical-align: baseline;
+        text-shadow: none!important;
+        font-family:@body-font-family;
+        font-size:13px;
+        font-weight:400;
+      }
+      i.icon { font-style: normal !important; text-align: center; vertical-align: middle; top:-1px;}
+    }
+  }
+}
+//embed
+.embedded-object{
+    margin-bottom:10px;
+}
+
+//text-align for cols3
+.columnizer-cols3{
+        .columnizer-col:nth-of-type(1),.columnizer-col:nth-of-type(3){
+            .doc-title{
+                max-width:100px;
+            }
+            .download-button{
+                width:100px;
+                margin:0 0 10px 0;
+            }
+        } 
+        #doc-title{
+            display: block;
+            margin: 0;
+        }
+        .documents li a .download-button{
+            float: none;
+        }
+}
+.columnizer-cols3{
+        .columnizer-col:nth-of-type(1){
+            .asset-title {
+                text-align:left;
+            }
+            .description, .body, .description li, .body li,  {
+                text-align:left;
+            }
+        }
+
+        .columnizer-col:nth-of-type(3){
+            text-align: left;
+        }
+}
+
+
+.cool-hr-tag{
+    display: block;
+    width: 20%;
+    margin: 50px auto 40px auto;
+    border: 1px solid #dededc;
+}
+.footer{
+    margin:50px auto 0;
+    width:700px;
+    background-color: lightgray;
+    height:1px;
+
+
+}
+//without this div margin bottom was not working
+div#bottom-margin{
+    height:40px;
+    background-color: transparent;
+    max-width:900px;
+    margin:0 auto;
+}
+//pop-shearing last element (a tag) was block elemnt in firefox
+#pop-shearing {
+    text-align: center;
+    a{
+        display: inline-block !important;
+    }
+}
+// Clearfix
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: ' ';
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+// End structure
+/////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////
+// Mobile
+//
+// The Populr mobile reset will handle some of the basics of mobilizing 
+// your theme, such as stacking all of the assets vertically and scaling 
+// them to 100% of the width of their container. However, you'll have to 
+// fine tune the styling to make your theme look really good on mobile
+// devices.
+
+@media screen and (max-width: 960px) {
+  #populr > .mobile-reset();
+
+  // Edit the grid for mobile
+  .columnizer-row-inner, #pop-title { max-width: 640px; }
+  .columnizer-col { margin: 0 10px 20px !important; }
+
+  // Edit the typography for mobile
+  #pop-title { font-size: 40px !important; }
+  .asset-title { font-size: 24px !important; }
+  .description, .body, .description li, .body li { font-size: 14px !important; }
+  .asset-title, .description, .body, .description li, .body li { text-align: left !important; }
+}
+
+@media screen and (max-width: 600px) {
+  #pop-title { font-size: 32px !important; }
+  .asset-title { font-size: 20px !important; }
+}
